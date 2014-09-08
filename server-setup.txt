@@ -1,0 +1,15 @@
+Listen 9090
+NameVirtualHost *:9090
+<VirtualHost *:9090>
+	ServerName instaweb.local
+    DocumentRoot C:\Users\martin.dipalma\Desktop\Facultad\IA\Instaweb
+ 
+    SetEnv APPLICATION_ENV "development"
+ 
+    <Directory C:\Users\martin.dipalma\Desktop\Facultad\IA\Instaweb>
+        DirectoryIndex index.html
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>

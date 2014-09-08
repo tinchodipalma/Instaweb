@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<title>Instaweb - Proyecto de IA</title>
+		<link href="js/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="js/jquery2.1.1.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/CamanJS/dist/caman.full.js"></script>
+		<script type="text/javascript">
+			Caman("#imageId", "images/disney.jpg", function () {
+			  // manipulate image here
+			  this.saturation(20)
+		          .gamma(1.4)
+		          .vintage()
+		          .contrast(50)
+		          .exposure(15)
+		          .vignette(300, 60)
+		          .render();
+			});
+		</script>
+	</head>
+	
+	<body>
+
+		<div id="header"></div>		
+
+		<div id="content">
+
+			<div class="image">
+				<canvas id="imageId"></canvas>
+
+			</div>
+
+			<div class="buttons"></div>
+
+		</div>		
+
+		<div id="footer"></div>		
+
+
+	</body>
+</html>
