@@ -6,32 +6,158 @@
 		<script type="text/javascript" src="js/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/CamanJS/dist/caman.full.js"></script>
 		<script type="text/javascript">
-			Caman("#imageId", "images/disney.jpg", function () {
-			  // manipulate image here
-			  this.saturation(20)
-		          .gamma(1.4)
-		          .vintage()
-		          .contrast(50)
-		          .exposure(15)
-		          .vignette(300, 60)
-		          .render();
+			$(document).ready(function () {
+				Caman("#imageId", "images/disney.jpg", function () {
+				  // manipulate image here
+				});
+
+				$('.update.gamma').click(function () {
+					var gammaValue = ($('#gamma .slider').val() / 10);
+
+					if (gammaValue > 0) {
+						Caman("#imageId", function () {
+						  this.gamma(gammaValue)
+					          //.saturation(20)
+					          //.contrast(50)
+					          //.exposure(15)
+					          //.vignette(300, 60)
+					          .render();
+				      	});
+					}
+				});
+
+				$('.update.contrast').click(function () {
+					var contrastValue = ($('#contrast .slider').val());
+					console.log(contrastValue);
+					Caman("#imageId", function () {
+					  this.contrast(contrastValue)
+				          //.saturation(20)
+				          //.contrast(50)
+				          //.exposure(15)
+				          //.vignette(300, 60)
+				          .render();
+			      	});
+				});
 			});
 		</script>
+		<style>
+			body { padding-top: 70px; }
+
+			#header {
+				border-bottom: 2px solid #777;
+				box-shadow: 0 0 5px #777;
+			}
+
+			.sidebar-right {
+				position: absolute;
+				background: #444;
+				top: 50px;
+				bottom: 0;
+				left: auto;
+				right: 0;
+				padding-top: 20px;
+			}
+
+			.sidebar-right .list-group {
+				width: 100%;
+			}
+
+			.btn,
+			.panel,
+			.list-group-item {
+				border-radius: 0 !important;
+			}
+
+		</style>
 	</head>
 	
 	<body>
 
-		<div id="header"></div>		
+		<div id="header" class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+			  		<a class="navbar-brand" href="/">Instaweb</a>
+				</div>
 
-		<div id="content">
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-			<div class="image">
-				<canvas id="imageId"></canvas>
+					<ul class="nav navbar-nav navbar-left">
+						<li>
+							<a href="#">Cargar imagen</a>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a href="#">Guardar</a>
+						</li>
+					</ul>
+
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</div>
+
+		<div id="content" class="container-fluid">
+			<div class="sidebar-left col-sm-2">
 
 			</div>
+			<div class="image col-sm-6 text-center">
+				<canvas id="imageId"></canvas>
+			</div>
+			<div class="sidebar-right col-sm-4">
+				<div class="panel-group" id="accordion">
 
-			<div class="buttons"></div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#gamma">
+									Gamma
+								</a>
+							</h4>
+						</div>
+						<div id="gamma" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<input type="range" class="slider" min="0" max="100">
+								<button type="button" class="btn btn-default update gamma">Actualizar</button>
+							</div>
+						</div>
+					</div>
 
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#contrast">
+									Contraste
+								</a>
+							</h4>
+						</div>
+						<div id="contrast" class="panel-collapse collapse">
+							<div class="panel-body">
+								<input type="range" class="slider" min="-100" max="100">
+								<button type="button" class="btn btn-default update contrast">Actualizar</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#exposure">
+									Exposición
+								</a>
+							</h4>
+						</div>
+						<div id="exposure" class="panel-collapse collapse">
+							<div class="panel-body">
+								<input type="range" class="slider" min="0" max="100">
+								<button type="button" class="btn btn-default update exposure">Actualizar</button>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
 		</div>		
 
 		<div id="footer"></div>		
