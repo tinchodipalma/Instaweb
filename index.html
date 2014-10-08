@@ -5,6 +5,7 @@
 		<script type="text/javascript" src="js/jquery2.1.1.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/CamanJS/dist/caman.full.js"></script>
+		<script type="text/javascript" src="js/instaweb.caman.plugins.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function () {
 				Caman("#imageId", "images/disney.jpg", function () {
@@ -16,26 +17,76 @@
 
 					if (gammaValue > 0) {
 						Caman("#imageId", function () {
-						  this.gamma(gammaValue)
-					          //.saturation(20)
-					          //.contrast(50)
-					          //.exposure(15)
-					          //.vignette(300, 60)
-					          .render();
+							this.gamma(gammaValue).render();
 				      	});
 					}
 				});
 
 				$('.update.contrast').click(function () {
-					var contrastValue = ($('#contrast .slider').val());
-					console.log(contrastValue);
+					// Tiene que ser entre 5 y 10 como "Normales" porque sino se va en Contraste
+					var contrastValue = ($('#contrast .slider').val()/10);
 					Caman("#imageId", function () {
-					  this.contrast(contrastValue)
-				          //.saturation(20)
-				          //.contrast(50)
-				          //.exposure(15)
-				          //.vignette(300, 60)
-				          .render();
+						this.contrast(contrastValue).render();
+			      	});
+				});
+
+				$('.update.brightness').click(function () {
+					var brightnessVal = ($('#brightness .slider').val());
+					Caman("#imageId", function () {
+						this.brightness(brightnessVal).render();
+			      	});
+				});
+
+				$('.update.exposure').click(function () {
+					var exposureVal = ($('#exposure .slider').val());
+					Caman("#imageId", function () {
+						this.exposure(exposureVal).render();
+			      	});
+				});
+
+				$('.update.saturation').click(function () {
+					var saturationVal = ($('#saturation .slider').val());
+					Caman("#imageId", function () {
+						this.saturation(saturationVal).render();
+			      	});
+				});
+
+				$('.transform.greyscale').click(function () {
+					Caman("#imageId", function () {
+						this.greyscale().render();
+			      	});
+				});
+
+				$('.transform.invert').click(function () {
+					Caman("#imageId", function () {
+						this.invert().render();
+			      	});
+				});
+
+				$('.transform.edgeDetection').click(function () {
+					Caman("#imageId", function () {
+						this.edgeDetection();
+						this.render();
+			      	});
+				});
+
+				$('.transform.customMask').click(function () {
+					Caman("#imageId", function () {
+						var mask = [
+							$('input[name=mask-1]').val(),
+							$('input[name=mask-2]').val(),
+							$('input[name=mask-3]').val(),
+							$('input[name=mask-4]').val(),
+							$('input[name=mask-5]').val(),
+							$('input[name=mask-6]').val(),
+							$('input[name=mask-7]').val(),
+							$('input[name=mask-8]').val(),
+							$('input[name=mask-9]').val(),
+						];
+						console.log(mask);
+
+						this.customMask(mask);
+						this.render();
 			      	});
 				});
 			});
@@ -58,6 +109,16 @@
 				padding-top: 20px;
 			}
 
+			.sidebar-left {
+				position: absolute;
+				background: #AAA;
+				top: 50px;
+				bottom: 0;
+				right: auto;
+				left: 0;
+				padding-top: 20px;
+			}
+
 			.sidebar-right .list-group {
 				width: 100%;
 			}
@@ -68,14 +129,24 @@
 				border-radius: 0 !important;
 			}
 
+			.sidebar-left .panel {
+				width: 100%;
+			}
+
+			.maskInput {
+				width: 30%;
+			}
+
 		</style>
 	</head>
 	
 	<body>
 
 		<div id="header" class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
+
 				<div class="navbar-header">
 			  		<a class="navbar-brand" href="/">Instaweb</a>
 				</div>
@@ -95,17 +166,60 @@
 					</ul>
 
 				</div><!-- /.navbar-collapse -->
+
 			</div><!-- /.container-fluid -->
+
 		</div>
 
 		<div id="content" class="container-fluid">
-			<div class="sidebar-left col-sm-2">
+
+			<div class="sidebar-left col-sm-3">
+
+				<div class="panel panel-default">
+
+					<div class="panel-heading">
+						<h4 class="panel-title">Transformaciones</h4>
+					</div>
+
+					<div class="panel-body">
+						<button type="button" class="btn btn-default transform greyscale">Escala de Grises</button>
+						<button type="button" class="btn btn-default transform invert">Invertir</button>
+						<button type="button" class="btn btn-default transform edgeDetection">Detecci&oacute;n de Bordes</button>
+					</div>
+
+				</div>
+
+				<div class="panel panel-default">
+
+					<div class="panel-heading">
+						<h4 class="panel-title">M&aacute;scara Personalizada</h4>
+					</div>
+
+					<div class="panel-body">
+
+						<input type="number" name="mask-1" value="0" class="maskInput">
+						<input type="number" name="mask-2" value="0" class="maskInput">
+						<input type="number" name="mask-3" value="0" class="maskInput">
+						<input type="number" name="mask-4" value="0" class="maskInput">
+						<input type="number" name="mask-5" value="0" class="maskInput">
+						<input type="number" name="mask-6" value="0" class="maskInput">
+						<input type="number" name="mask-7" value="0" class="maskInput">
+						<input type="number" name="mask-8" value="0" class="maskInput">
+						<input type="number" name="mask-9" value="0" class="maskInput">
+
+						<button type="button" class="btn btn-default transform customMask">Aplicar</button>
+					</div>
+
+				</div>
 
 			</div>
-			<div class="image col-sm-6 text-center">
+
+			<div class="image col-sm-6 col-sm-offset-3 text-center">
 				<canvas id="imageId"></canvas>
 			</div>
-			<div class="sidebar-right col-sm-4">
+
+			<div class="sidebar-right col-sm-3">
+			
 				<div class="panel-group" id="accordion">
 
 					<div class="panel panel-default">
@@ -116,7 +230,7 @@
 								</a>
 							</h4>
 						</div>
-						<div id="gamma" class="panel-collapse collapse in">
+						<div id="gamma" class="panel-collapse collapse">
 							<div class="panel-body">
 								<input type="range" class="slider" min="0" max="100">
 								<button type="button" class="btn btn-default update gamma">Actualizar</button>
@@ -143,6 +257,38 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#brightness">
+									Brillo
+								</a>
+							</h4>
+						</div>
+						<div id="brightness" class="panel-collapse collapse">
+							<div class="panel-body">
+								<input type="range" class="slider" min="-100" max="100">
+								<button type="button" class="btn btn-default update brightness">Actualizar</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#saturation">
+									Saturaci&oacute;n
+								</a>
+							</h4>
+						</div>
+						<div id="saturation" class="panel-collapse collapse">
+							<div class="panel-body">
+								<input type="range" class="slider" min="-100" max="100">
+								<button type="button" class="btn btn-default update saturation">Actualizar</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
 								<a data-toggle="collapse" data-parent="#accordion" href="#exposure">
 									Exposici&oacute;n
 								</a>
@@ -157,10 +303,14 @@
 					</div>
 
 				</div>
+
 			</div>
+
 		</div>		
 
-		<div id="footer"></div>		
+		<div id="footer">
+
+		</div>		
 
 
 	</body>
