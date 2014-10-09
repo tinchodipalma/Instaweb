@@ -1596,6 +1596,8 @@
 
   })();
 
+  Caman.PixelInfo = PixelInfo;
+
   Plugin = (function() {
 
     function Plugin() {}

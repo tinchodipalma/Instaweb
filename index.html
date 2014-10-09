@@ -73,22 +73,26 @@
 				$('.transform.customMask').click(function () {
 					Caman("#imageId", function () {
 						var mask = [
-							$('input[name=mask-1]').val(),
-							$('input[name=mask-2]').val(),
-							$('input[name=mask-3]').val(),
-							$('input[name=mask-4]').val(),
-							$('input[name=mask-5]').val(),
-							$('input[name=mask-6]').val(),
-							$('input[name=mask-7]').val(),
-							$('input[name=mask-8]').val(),
-							$('input[name=mask-9]').val(),
+							[
+								$('input[name=mask-1]').val(),
+								$('input[name=mask-2]').val(),
+								$('input[name=mask-3]').val()
+							],
+							[
+								$('input[name=mask-4]').val(),
+								$('input[name=mask-5]').val(),
+								$('input[name=mask-6]').val()
+							],
+							[
+								$('input[name=mask-7]').val(),
+								$('input[name=mask-8]').val(),
+								$('input[name=mask-9]').val()
+							]
 						];
-						console.log(mask);
-
-						this.customMask(mask);
-						this.render();
+						this.customMask(mask).render();
 			      	});
 				});
+
 			});
 		</script>
 		<style>
