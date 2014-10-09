@@ -5,15 +5,9 @@
       pixels = this.pixelData,
       imageData, ctx, Gx, Gy, intensity, coords, canvas, a, b, x, y, lw, lh, pixelLoc;
 
+    canvas = this.canvas;
 
-    if (typeof exports !== 'undefined' && exports !== null) {
-      canvas = new Canvas( width, height );
-    } else {
-      canvas = document.createElement( 'canvas' );
-      canvas.width = width;
-      canvas.height = height;
-    }
-    ctx = canvas.getContext( '2d' );
+    ctx = this.canvas.getContext('2d');
 
     var FILTER_Y = mask;
 
