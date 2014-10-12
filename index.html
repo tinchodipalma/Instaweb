@@ -388,6 +388,7 @@
 
 			.maskInput {
 				width: 30%;
+				margin: 2px 1%;
 			}
 
 			.presets .btn {
@@ -421,6 +422,27 @@
 				padding: 15px 0;
 				background: #333;
 				border-top: 2px solid #666;
+			}
+
+			.mask-title {
+				font-weight: bold;
+				margin: 15px 0 3px;
+			}
+
+			.mask-matrix {
+				width: 98%;
+				margin: 0 auto;
+			}
+
+			.transform.customMask {
+				display: block;
+				width: 95.5%;
+				margin: 20px auto;
+			}
+
+			.slider {
+				display: block;
+				margin: 5px auto 10px;
 			}
 
 		</style>
@@ -461,7 +483,7 @@
 
 			<div class="sidebar-left col-sm-3">
 
-				<div class="panel panel-default">
+				<div class="panel panel-default customMaskPanel">
 
 					<div class="panel-heading">
 						<h4 class="panel-title">M&aacute;scara Personalizada</h4>
@@ -485,29 +507,33 @@
 							Mascara X
 						</div>
 
-						<input type="number" name="maskX-1" value="-1" class="maskInput maskX">
-						<input type="number" name="maskX-2" value="0" class="maskInput maskX">
-						<input type="number" name="maskX-3" value="1" class="maskInput maskX">
-						<input type="number" name="maskX-4" value="-2" class="maskInput maskX">
-						<input type="number" name="maskX-5" value="0" class="maskInput maskX">
-						<input type="number" name="maskX-6" value="2" class="maskInput maskX">
-						<input type="number" name="maskX-7" value="-1" class="maskInput maskX">
-						<input type="number" name="maskX-8" value="0" class="maskInput maskX">
-						<input type="number" name="maskX-9" value="1" class="maskInput maskX">
+						<div class="mask-matrix">
+							<input type="number" name="maskX-1" value="-1" class="maskInput maskX">
+							<input type="number" name="maskX-2" value="0" class="maskInput maskX">
+							<input type="number" name="maskX-3" value="1" class="maskInput maskX">
+							<input type="number" name="maskX-4" value="-2" class="maskInput maskX">
+							<input type="number" name="maskX-5" value="0" class="maskInput maskX">
+							<input type="number" name="maskX-6" value="2" class="maskInput maskX">
+							<input type="number" name="maskX-7" value="-1" class="maskInput maskX">
+							<input type="number" name="maskX-8" value="0" class="maskInput maskX">
+							<input type="number" name="maskX-9" value="1" class="maskInput maskX">
+						</div>
 
 						<div class="mask-title">
 							Mascara Y
 						</div>
+						<div class="mask-matrix">
+							<input type="number" name="maskY-1" value="-1" class="maskInput maskY">
+							<input type="number" name="maskY-2" value="-2" class="maskInput maskY">
+							<input type="number" name="maskY-3" value="-1" class="maskInput maskY">
+							<input type="number" name="maskY-4" value="0" class="maskInput maskY">
+							<input type="number" name="maskY-5" value="0" class="maskInput maskY">
+							<input type="number" name="maskY-6" value="0" class="maskInput maskY">
+							<input type="number" name="maskY-7" value="1" class="maskInput maskY">
+							<input type="number" name="maskY-8" value="2" class="maskInput maskY">
+							<input type="number" name="maskY-9" value="1" class="maskInput maskY">
+						</div>
 
-						<input type="number" name="maskY-1" value="-1" class="maskInput maskY">
-						<input type="number" name="maskY-2" value="-2" class="maskInput maskY">
-						<input type="number" name="maskY-3" value="-1" class="maskInput maskY">
-						<input type="number" name="maskY-4" value="0" class="maskInput maskY">
-						<input type="number" name="maskY-5" value="0" class="maskInput maskY">
-						<input type="number" name="maskY-6" value="0" class="maskInput maskY">
-						<input type="number" name="maskY-7" value="1" class="maskInput maskY">
-						<input type="number" name="maskY-8" value="2" class="maskInput maskY">
-						<input type="number" name="maskY-9" value="1" class="maskInput maskY">
 
 						<button type="button" class="btn btn-default transform customMask">Aplicar</button>
 					</div>
