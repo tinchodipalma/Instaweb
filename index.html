@@ -8,10 +8,23 @@
 		<script type="text/javascript" src="js/instaweb.caman.plugins.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function () {
+				$(document).bind('loadImageEvent', function(event, src) {
+					console.log(src);
+					var canvas = document.getElementById('imageId'),
+					    context = canvas.getContext('2d'),
+					    image = new Image();
+					    image.onload = function() {
+					        context.drawImage(image, 0, 0);
+					    };
+			    image.src = src;
 
-				Caman("#imageId", "images/disney.jpg", function () {
-				  // manipulate image here
+					Caman("#imageId", image.src, function () {
+						this.reloadCanvasData();
+						// manipulate image here
+					});
 				});
+
+				$(document).trigger('loadImageEvent', "images/disney.jpg");
 
 				$('.update.gamma').click(function () {
 					var gammaValue = ($('#gamma .slider').val() / 10);
@@ -70,6 +83,16 @@
 					setTimeout(function () {
 						link[0].click();
 					}, 500);
+				});
+
+				$('.global.loadImage').click(function () {
+					var file = document.querySelector('input[name=imageToLoad]'),
+							clickEvent = new Event('click');
+					file.dispatchEvent(clickEvent);
+				});
+
+				$('.imageToLoad').on('change', function () {
+					// Que hacer cuando cambie
 				});
 
 				$('.transform.invert').click(function () {
@@ -464,7 +487,7 @@
 
 					<ul class="nav navbar-nav navbar-left">
 						<li>
-							<a href="#">Cargar imagen</a>
+							<a href="#" class="global loadImage">Cargar imagen</a>
 						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
@@ -547,6 +570,7 @@
 				<canvas id="imageId" download="instaweb"></canvas>
 
 				<div class="imageFooter">
+					<input type="file" name="imageToLoad" class="hide imageToLoad">
 					<a href='#' download='Instaweb' class="saveLink hide">Save</a>
 					<button type="button" class="btn btn-default global save">Guardar imagen</button>
 				</div>
