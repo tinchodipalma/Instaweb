@@ -54,7 +54,13 @@
 				$('.transform.greyscale').click(function () {
 					Caman("#imageId", function () {
 						this.greyscale().render();
-			      	});
+	      	});
+				});
+
+				$('.global.reset').click(function () {
+					Caman("#imageId", function () {
+						this.revert();
+					});
 				});
 
 				$('.transform.invert').click(function () {
@@ -70,27 +76,261 @@
 			      	});
 				});
 
+				$('.preset.sobel').click(function() {
+					$('input[name=maskX-1]').val(-1);
+					$('input[name=maskX-2]').val(0);
+					$('input[name=maskX-3]').val(1);
+					$('input[name=maskX-4]').val(-2);
+					$('input[name=maskX-5]').val(0);
+					$('input[name=maskX-6]').val(2);
+					$('input[name=maskX-7]').val(-1);
+					$('input[name=maskX-8]').val(0);
+					$('input[name=maskX-9]').val(1);
+					$('input[name=maskY-1]').val(-1);
+					$('input[name=maskY-2]').val(-2);
+					$('input[name=maskY-3]').val(-1);
+					$('input[name=maskY-4]').val(0);
+					$('input[name=maskY-5]').val(0);
+					$('input[name=maskY-6]').val(0);
+					$('input[name=maskY-7]').val(1);
+					$('input[name=maskY-8]').val(2);
+					$('input[name=maskY-9]').val(1);
+				});
+
+				$('.preset.prewitt').click(function() {
+					$('input[name=maskX-1]').val(-1);
+					$('input[name=maskX-2]').val(0);
+					$('input[name=maskX-3]').val(1);
+					$('input[name=maskX-4]').val(-1);
+					$('input[name=maskX-5]').val(0);
+					$('input[name=maskX-6]').val(1);
+					$('input[name=maskX-7]').val(-1);
+					$('input[name=maskX-8]').val(0);
+					$('input[name=maskX-9]').val(1);
+					$('input[name=maskY-1]').val(-1);
+					$('input[name=maskY-2]').val(-1);
+					$('input[name=maskY-3]').val(-1);
+					$('input[name=maskY-4]').val(0);
+					$('input[name=maskY-5]').val(0);
+					$('input[name=maskY-6]').val(0);
+					$('input[name=maskY-7]').val(1);
+					$('input[name=maskY-8]').val(1);
+					$('input[name=maskY-9]').val(1);
+				});
+
+				$('.preset.kirsch').click(function() {
+					$('input[name=maskX-1]').val(-3);
+					$('input[name=maskX-2]').val(-3);
+					$('input[name=maskX-3]').val(5);
+					$('input[name=maskX-4]').val(-3);
+					$('input[name=maskX-5]').val(0);
+					$('input[name=maskX-6]').val(5);
+					$('input[name=maskX-7]').val(-3);
+					$('input[name=maskX-8]').val(-3);
+					$('input[name=maskX-9]').val(5);
+					$('input[name=maskY-1]').val(-3);
+					$('input[name=maskY-2]').val(-3);
+					$('input[name=maskY-3]').val(-3);
+					$('input[name=maskY-4]').val(-3);
+					$('input[name=maskY-5]').val(0);
+					$('input[name=maskY-6]').val(-3);
+					$('input[name=maskY-7]').val(5);
+					$('input[name=maskY-8]').val(5);
+					$('input[name=maskY-9]').val(5);
+				});
+
+				$('.preset.kirsch').click(function() {
+					$('input[name=maskX-1]').val(-3);
+					$('input[name=maskX-2]').val(-3);
+					$('input[name=maskX-3]').val(5);
+					$('input[name=maskX-4]').val(-3);
+					$('input[name=maskX-5]').val(0);
+					$('input[name=maskX-6]').val(5);
+					$('input[name=maskX-7]').val(-3);
+					$('input[name=maskX-8]').val(-3);
+					$('input[name=maskX-9]').val(5);
+					$('input[name=maskY-1]').val(-3);
+					$('input[name=maskY-2]').val(-3);
+					$('input[name=maskY-3]').val(-3);
+					$('input[name=maskY-4]').val(-3);
+					$('input[name=maskY-5]').val(0);
+					$('input[name=maskY-6]').val(-3);
+					$('input[name=maskY-7]').val(5);
+					$('input[name=maskY-8]').val(5);
+					$('input[name=maskY-9]').val(5);
+				});
+
+				$('.preset.kayyali').click(function() {
+					$('input[name=maskX-1]').val(6);
+					$('input[name=maskX-2]').val(0);
+					$('input[name=maskX-3]').val(-6);
+					$('input[name=maskX-4]').val(0);
+					$('input[name=maskX-5]').val(0);
+					$('input[name=maskX-6]').val(0);
+					$('input[name=maskX-7]').val(-6);
+					$('input[name=maskX-8]').val(0);
+					$('input[name=maskX-9]').val(6);
+					$('input[name=maskY-1]').val(-6);
+					$('input[name=maskY-2]').val(0);
+					$('input[name=maskY-3]').val(6);
+					$('input[name=maskY-4]').val(0);
+					$('input[name=maskY-5]').val(0);
+					$('input[name=maskY-6]').val(0);
+					$('input[name=maskY-7]').val(6);
+					$('input[name=maskY-8]').val(0);
+					$('input[name=maskY-9]').val(-6);
+				});
+
+				$('.preset.instaweb').click(function() {
+					$('input[name=maskX-1]').val(-1);
+					$('input[name=maskX-2]').val(0);
+					$('input[name=maskX-3]').val(-1);
+					$('input[name=maskX-4]').val(0);
+					$('input[name=maskX-5]').val(1);
+					$('input[name=maskX-6]').val(0);
+					$('input[name=maskX-7]').val(-1);
+					$('input[name=maskX-8]').val(0);
+					$('input[name=maskX-9]').val(-1);
+					$('input[name=maskY-1]').val(0);
+					$('input[name=maskY-2]').val(-1);
+					$('input[name=maskY-3]').val(0);
+					$('input[name=maskY-4]').val(-1);
+					$('input[name=maskY-5]').val(1);
+					$('input[name=maskY-6]').val(-1);
+					$('input[name=maskY-7]').val(0);
+					$('input[name=maskY-8]').val(-1);
+					$('input[name=maskY-9]').val(0);
+				});
+
+				$('.preset.average').click(function() {
+					$('input[name=maskX-1]').val(0.1111);
+					$('input[name=maskX-2]').val(0.1111);
+					$('input[name=maskX-3]').val(0.1111);
+					$('input[name=maskX-4]').val(0.1111);
+					$('input[name=maskX-5]').val(0.1111);
+					$('input[name=maskX-6]').val(0.1111);
+					$('input[name=maskX-7]').val(0.1111);
+					$('input[name=maskX-8]').val(0.1111);
+					$('input[name=maskX-9]').val(0.1111);
+					$('input[name=maskY-1]').val(0.1111);
+					$('input[name=maskY-2]').val(0.1111);
+					$('input[name=maskY-3]').val(0.1111);
+					$('input[name=maskY-4]').val(0.1111);
+					$('input[name=maskY-5]').val(0.1111);
+					$('input[name=maskY-6]').val(0.1111);
+					$('input[name=maskY-7]').val(0.1111);
+					$('input[name=maskY-8]').val(0.1111);
+					$('input[name=maskY-9]').val(0.1111);
+				});
+
+				$('.preset.unsharp').click(function() {
+					$('input[name=maskX-1]').val(-0.1667);
+					$('input[name=maskX-2]').val(-0.6667);
+					$('input[name=maskX-3]').val(-0.1667);
+					$('input[name=maskX-4]').val(-0.6667);
+					$('input[name=maskX-5]').val(4.3333);
+					$('input[name=maskX-6]').val(-0.6667);
+					$('input[name=maskX-7]').val(-0.1667);
+					$('input[name=maskX-8]').val(-0.6667);
+					$('input[name=maskX-9]').val(-0.1667);
+					$('input[name=maskY-1]').val(-0.1667);
+					$('input[name=maskY-2]').val(-0.6667);
+					$('input[name=maskY-3]').val(-0.1667);
+					$('input[name=maskY-4]').val(-0.6667);
+					$('input[name=maskY-5]').val(4.3333);
+					$('input[name=maskY-6]').val(-0.6667);
+					$('input[name=maskY-7]').val(-0.1667);
+					$('input[name=maskY-8]').val(-0.6667);
+					$('input[name=maskY-9]').val(-0.1667);
+				});
+
+				$('.preset.laplacian').click(function() {
+					$('input[name=maskX-1]').val(0.1667);
+					$('input[name=maskX-2]').val(0.6667);
+					$('input[name=maskX-3]').val(0.1667);
+					$('input[name=maskX-4]').val(0.6667);
+					$('input[name=maskX-5]').val(-3.3333);
+					$('input[name=maskX-6]').val(0.6667);
+					$('input[name=maskX-7]').val(0.1667);
+					$('input[name=maskX-8]').val(0.6667);
+					$('input[name=maskX-9]').val(0.1667);
+					$('input[name=maskY-1]').val(0.1667);
+					$('input[name=maskY-2]').val(0.6667);
+					$('input[name=maskY-3]').val(0.1667);
+					$('input[name=maskY-4]').val(0.6667);
+					$('input[name=maskY-5]').val(-3.3333);
+					$('input[name=maskY-6]').val(0.6667);
+					$('input[name=maskY-7]').val(0.1667);
+					$('input[name=maskY-8]').val(0.6667);
+					$('input[name=maskY-9]').val(0.1667);
+				});
+
+				$('.preset.gaussian').click(function() {
+					$('input[name=maskX-1]').val(0.0113);
+					$('input[name=maskX-2]').val(0.0838);
+					$('input[name=maskX-3]').val(0.0113);
+					$('input[name=maskX-4]').val(0.0838);
+					$('input[name=maskX-5]').val(0.6193);
+					$('input[name=maskX-6]').val(0.0838);
+					$('input[name=maskX-7]').val(0.0113);
+					$('input[name=maskX-8]').val(0.0838);
+					$('input[name=maskX-9]').val(0.0113);
+					$('input[name=maskY-1]').val(0.0113);
+					$('input[name=maskY-2]').val(0.0838);
+					$('input[name=maskY-3]').val(0.0113);
+					$('input[name=maskY-4]').val(0.0838);
+					$('input[name=maskY-5]').val(0.6193);
+					$('input[name=maskY-6]').val(0.0838);
+					$('input[name=maskY-7]').val(0.0113);
+					$('input[name=maskY-8]').val(0.0838);
+					$('input[name=maskY-9]').val(0.0113);
+				});
+
 				$('.transform.customMask').click(function () {
+					var maskX1 = [
+									$('input[name=maskX-1]').val(),
+									$('input[name=maskX-2]').val(),
+									$('input[name=maskX-3]').val()
+							],
+							maskX2 = [
+									$('input[name=maskX-4]').val(),
+									$('input[name=maskX-5]').val(),
+									$('input[name=maskX-6]').val()
+							],
+							maskX3 = [
+									$('input[name=maskX-7]').val(),
+									$('input[name=maskX-8]').val(),
+									$('input[name=maskX-9]').val()
+							],
+		 					maskY1 = [
+									$('input[name=maskY-1]').val(),
+									$('input[name=maskY-2]').val(),
+									$('input[name=maskY-3]').val()
+							],
+							maskY2 = [
+									$('input[name=maskY-4]').val(),
+									$('input[name=maskY-5]').val(),
+									$('input[name=maskY-6]').val()
+							],
+							maskY3 = [
+									$('input[name=maskY-7]').val(),
+									$('input[name=maskY-8]').val(),
+									$('input[name=maskY-9]').val()
+							];
+
+					var maskX = [ maskX1, maskX2, maskX3 ],
+							maskY = [ maskY1, maskY2, maskY3 ],
+							mask = [
+								{
+									x: maskX,
+									y: maskY
+								}
+							];
+
 					Caman("#imageId", function () {
-						var mask = [
-							[
-								$('input[name=mask-1]').val(),
-								$('input[name=mask-2]').val(),
-								$('input[name=mask-3]').val()
-							],
-							[
-								$('input[name=mask-4]').val(),
-								$('input[name=mask-5]').val(),
-								$('input[name=mask-6]').val()
-							],
-							[
-								$('input[name=mask-7]').val(),
-								$('input[name=mask-8]').val(),
-								$('input[name=mask-9]').val()
-							]
-						];
 						this.customMask(mask).render();
-			      	});
+	      	});
+
 				});
 
 			});
@@ -141,9 +381,42 @@
 				width: 30%;
 			}
 
+			.presets .btn {
+				width: 30%;
+				margin: 2px 1%;
+			}
+
+			.image {
+				position: absolute;
+				top: 0;
+				padding-top: 70px;
+				left: 25%;
+				right: auto;
+				bottom: 0;
+				background: url('images/transparent.png');
+				background-size: 100%;
+			}
+
+			#imageId {
+				max-width: 98%;
+				box-shadow: 0 0 20px #000;
+			}
+
+			.image .imageFooter {
+				position: absolute;
+				width: 100%;
+				bottom: 0;
+				top: auto;
+				left: 0;
+				right: 0;
+				padding: 15px 0;
+				background: #333;
+				border-top: 2px solid #666;
+			}
+
 		</style>
 	</head>
-	
+
 	<body>
 
 		<div id="header" class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
@@ -182,34 +455,50 @@
 				<div class="panel panel-default">
 
 					<div class="panel-heading">
-						<h4 class="panel-title">Transformaciones</h4>
-					</div>
-
-					<div class="panel-body">
-						<button type="button" class="btn btn-default transform greyscale">Escala de Grises</button>
-						<button type="button" class="btn btn-default transform invert">Invertir</button>
-						<button type="button" class="btn btn-default transform edgeDetection">Detecci&oacute;n de Bordes</button>
-					</div>
-
-				</div>
-
-				<div class="panel panel-default">
-
-					<div class="panel-heading">
 						<h4 class="panel-title">M&aacute;scara Personalizada</h4>
 					</div>
 
 					<div class="panel-body">
 
-						<input type="number" name="mask-1" value="0" class="maskInput">
-						<input type="number" name="mask-2" value="0" class="maskInput">
-						<input type="number" name="mask-3" value="0" class="maskInput">
-						<input type="number" name="mask-4" value="0" class="maskInput">
-						<input type="number" name="mask-5" value="0" class="maskInput">
-						<input type="number" name="mask-6" value="0" class="maskInput">
-						<input type="number" name="mask-7" value="0" class="maskInput">
-						<input type="number" name="mask-8" value="0" class="maskInput">
-						<input type="number" name="mask-9" value="0" class="maskInput">
+						<div class="presets">
+							<button type="button" class="btn btn-default preset prewitt">Prewitt</button>
+							<button type="button" class="btn btn-default preset sobel">Sobel</button>
+							<button type="button" class="btn btn-default preset kirsch">Kirsch</button>
+							<button type="button" class="btn btn-default preset kayyali">Kayyali</button>
+							<button type="button" class="btn btn-default preset average">Average</button>
+							<button type="button" class="btn btn-default preset unsharp">Unsharp</button>
+							<button type="button" class="btn btn-default preset gaussian">Gaussian</button>
+							<button type="button" class="btn btn-default preset laplacian">Laplacian</button>
+							<button type="button" class="btn btn-default preset instaweb">Instaweb</button>
+						</div>
+
+						<div class="mask-title">
+							Mascara X
+						</div>
+
+						<input type="number" name="maskX-1" value="-1" class="maskInput maskX">
+						<input type="number" name="maskX-2" value="0" class="maskInput maskX">
+						<input type="number" name="maskX-3" value="1" class="maskInput maskX">
+						<input type="number" name="maskX-4" value="-2" class="maskInput maskX">
+						<input type="number" name="maskX-5" value="0" class="maskInput maskX">
+						<input type="number" name="maskX-6" value="2" class="maskInput maskX">
+						<input type="number" name="maskX-7" value="-1" class="maskInput maskX">
+						<input type="number" name="maskX-8" value="0" class="maskInput maskX">
+						<input type="number" name="maskX-9" value="1" class="maskInput maskX">
+
+						<div class="mask-title">
+							Mascara Y
+						</div>
+
+						<input type="number" name="maskY-1" value="-1" class="maskInput maskY">
+						<input type="number" name="maskY-2" value="-2" class="maskInput maskY">
+						<input type="number" name="maskY-3" value="-1" class="maskInput maskY">
+						<input type="number" name="maskY-4" value="0" class="maskInput maskY">
+						<input type="number" name="maskY-5" value="0" class="maskInput maskY">
+						<input type="number" name="maskY-6" value="0" class="maskInput maskY">
+						<input type="number" name="maskY-7" value="1" class="maskInput maskY">
+						<input type="number" name="maskY-8" value="2" class="maskInput maskY">
+						<input type="number" name="maskY-9" value="1" class="maskInput maskY">
 
 						<button type="button" class="btn btn-default transform customMask">Aplicar</button>
 					</div>
@@ -218,12 +507,17 @@
 
 			</div>
 
-			<div class="image col-sm-6 col-sm-offset-3 text-center">
+			<div class="image col-sm-6 text-center">
+
 				<canvas id="imageId"></canvas>
+
+				<div class="imageFooter">
+					<button type="button" class="btn btn-default global reset">Reiniciar imagen</button>
+				</div>
 			</div>
 
 			<div class="sidebar-right col-sm-3">
-			
+
 				<div class="panel-group" id="accordion">
 
 					<div class="panel panel-default">
@@ -308,13 +602,26 @@
 
 				</div>
 
+				<div class="panel panel-default">
+
+					<div class="panel-heading">
+						<h4 class="panel-title">Transformaciones</h4>
+					</div>
+
+					<div class="panel-body">
+						<button type="button" class="btn btn-default transform greyscale">Escala de Grises</button>
+						<button type="button" class="btn btn-default transform invert">Invertir</button>
+					</div>
+
+				</div>
+
 			</div>
 
-		</div>		
+		</div>
 
 		<div id="footer">
 
-		</div>		
+		</div>
 
 
 	</body>

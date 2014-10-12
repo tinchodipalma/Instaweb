@@ -9,17 +9,8 @@
 
     ctx = this.canvas.getContext('2d');
 
-    var FILTER_Y = mask;
-
-    var FILTER_X = mask;
-
-    var FILTER_Y = [ [ -1, -2,  -1 ],
-                     [  0,  0,  0 ],
-                     [  1,  2,  1 ] ];
-
-    var FILTER_X = [ [ -1,  0,  1 ],
-                     [ -2,  0,  2 ],
-                     [ -1,  0,  1 ] ];
+    var FILTER_Y = mask.y,
+        FILTER_X = mask.x;
 
     var sumRgb = function (rgba) {
       return rgba.r + rgba.g + rgba.b;
@@ -34,7 +25,6 @@
 
       return newLoc;
     }
-      console.log(this.pixelData);
 
     var pixelAtLocation = function(loc) {
       return {
