@@ -8,6 +8,7 @@
 		<script type="text/javascript" src="js/instaweb.caman.plugins.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function () {
+
 				Caman("#imageId", "images/disney.jpg", function () {
 				  // manipulate image here
 				});
@@ -63,10 +64,18 @@
 					});
 				});
 
+				$('.global.save').click(function () {
+					var canvas = document.getElementById("imageId"),
+							link = $('.saveLink').attr('href', canvas.toDataURL());
+					setTimeout(function () {
+						link[0].click();
+					}, 500);
+				});
+
 				$('.transform.invert').click(function () {
 					Caman("#imageId", function () {
 						this.invert().render();
-			      	});
+	      	});
 				});
 
 				$('.transform.edgeDetection').click(function () {
@@ -438,7 +447,7 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-							<a href="#">Guardar</a>
+							<a href="#" class="global reset">Reiniciar imagen</a>
 						</li>
 					</ul>
 
@@ -509,10 +518,11 @@
 
 			<div class="image col-sm-6 text-center">
 
-				<canvas id="imageId"></canvas>
+				<canvas id="imageId" download="instaweb"></canvas>
 
 				<div class="imageFooter">
-					<button type="button" class="btn btn-default global reset">Reiniciar imagen</button>
+					<a href='#' download='Instaweb' class="saveLink hide">Save</a>
+					<button type="button" class="btn btn-default global save">Guardar imagen</button>
 				</div>
 			</div>
 
