@@ -8,6 +8,7 @@
 		<script type="text/javascript" src="js/instaweb.caman.plugins.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function () {
+
 				$(document).bind('loadImageEvent', function(event, src) {
 					console.log(src);
 					var canvas = document.getElementById('imageId'),
@@ -15,13 +16,15 @@
 					    image = new Image();
 					    image.onload = function() {
 					        context.drawImage(image, 0, 0);
+
+									Caman("#imageId", image.src, function () {
+										this.reloadCanvasData();
+										this.contrast(0).render();
+										// manipulate image here
+									});
 					    };
 			    image.src = src;
 
-					Caman("#imageId", image.src, function () {
-						this.reloadCanvasData();
-						// manipulate image here
-					});
 				});
 
 				$(document).trigger('loadImageEvent', "images/disney.jpg");
@@ -73,26 +76,27 @@
 
 				$('.global.reset').click(function () {
 					Caman("#imageId", function () {
-						this.revert();
+						this.reloadCanvasData();
 					});
 				});
 
 				$('.global.save').click(function () {
 					var canvas = document.getElementById("imageId"),
 							link = $('.saveLink').attr('href', canvas.toDataURL());
-					setTimeout(function () {
-						link[0].click();
-					}, 500);
+
+					console.log("Descargando: " + canvas.toDataURL());
+					link.get(0).click();
 				});
 
 				$('.global.loadImage').click(function () {
-					var file = document.querySelector('input[name=imageToLoad]'),
-							clickEvent = new Event('click');
-					file.dispatchEvent(clickEvent);
+					$('.imageToLoad').click();
 				});
 
 				$('.imageToLoad').on('change', function () {
-					// Que hacer cuando cambie
+					var file = $(this).get(0).files[0],
+							url = window.URL.createObjectURL(file);
+
+					$(this).trigger('loadImageEvent', url);
 				});
 
 				$('.transform.invert').click(function () {
