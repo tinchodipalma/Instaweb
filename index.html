@@ -14,16 +14,24 @@
 					var canvas = document.getElementById('imageId'),
 					    context = canvas.getContext('2d'),
 					    image = new Image();
-					    image.onload = function() {
-					        context.drawImage(image, 0, 0);
+					image.src = src;
 
-									Caman("#imageId", image.src, function () {
-										this.reloadCanvasData();
-										this.contrast(0).render();
-										// manipulate image here
-									});
-					    };
-			    image.src = src;
+					$('.originalImage').attr('src', image.src);
+					var newCanvas = $('<canvas>').attr('id', 'imageId').attr('download', 'Instaweb');
+					console.log(newCanvas.get(0).outerHTML);
+
+					$('.canvasHolder').html(newCanvas.get(0).outerHTML);
+
+					image.onload = function() {
+							context.drawImage(image, 0, 0);
+							Caman("#imageId", image.src, function () {
+								this.reloadCanvasData();
+								this.contrast(0).render();
+								// manipulate image here
+							});
+			    };
+
+					console.log(image);
 
 				});
 
@@ -75,9 +83,8 @@
 				});
 
 				$('.global.reset').click(function () {
-					Caman("#imageId", function () {
-						this.reloadCanvasData();
-					});
+					var url = $('.originalImage').attr('src');
+					$(this).trigger('loadImageEvent', url);
 				});
 
 				$('.global.save').click(function () {
@@ -570,11 +577,13 @@
 			</div>
 
 			<div class="image col-sm-6 text-center">
-
-				<canvas id="imageId" download="instaweb"></canvas>
+				<div class="canvasHolder">
+					<canvas id="imageId" download="instaweb"></canvas>
+				</div>
 
 				<div class="imageFooter">
 					<input type="file" name="imageToLoad" class="hide imageToLoad">
+					<img class="hide originalImage">
 					<a href='#' download='Instaweb' class="saveLink hide">Save</a>
 					<button type="button" class="btn btn-default global save">Guardar imagen</button>
 				</div>
